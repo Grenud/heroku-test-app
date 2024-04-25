@@ -54,7 +54,7 @@ app.post("/api/bayava", async (req, res) => {
     }
 });
 
-app.delete("/api/bayava", async (req, res) => {
+app.delete("/api/bayava/:id", async (req, res) => {
     try {
       const { id } = req.params;
       const deleteCourse = await poolDB.query("DELETE FROM bayavasfdc.course__c WHERE id = $1", [id]);
