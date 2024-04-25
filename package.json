@@ -1,0 +1,21 @@
+{
+  "name": "heroku-test-app2",
+  "version": "1.0.0",
+  "description": "Dummy React project to test connecting PostgreSQL with React and deploying it to Heroku.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd client && npm start",
+    "backend": "cd server && npm start",
+    "frontDev": "cd client && npm run dev",
+    "backDev": "cd server && npm run dev",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "dev": "concurrently \"npm run backDev\" \"npm run frontDev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
