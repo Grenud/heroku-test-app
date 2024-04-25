@@ -1,6 +1,7 @@
 const express = require("express");
 const {Pool} = require("pg")
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 dotenv.config();
 
@@ -15,6 +16,12 @@ const poolDB = new Pool({
         rejectUnauthorized: false
     }
 });
+
+app.use(cors(
+    {
+        origin: "http://localhost:3000"
+    }
+));
 
 app.get("/", (req, res) => {
     res.status(200).json({msg: "Hello World"});
