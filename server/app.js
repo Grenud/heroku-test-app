@@ -21,8 +21,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/bayava", async (req, res) => {
-    const users = await poolDB.query("SELECT * from bayavasfdc.course__c");
-    res.status(200).json(users);
+    try {
+        const users = await poolDB.query("SELECT * from bayavasfdc.course__c");
+        res.status(200).json(users);
+    } 
+    catch (error) {
+        console.error(error.message)
+    }
+    
 });
 
 app.listen(port, () => {
