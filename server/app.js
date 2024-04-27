@@ -1,21 +1,12 @@
 const express = require("express");
-const {Pool} = require("pg")
 const dotenv = require("dotenv");
 const cors = require("cors");
+const poolDB = require("./db");
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 4000;
-
-const DB_URI = process.env.DATABASE_URL;
-
-const poolDB = new Pool({
-    connectionString: DB_URI,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
 
 // MIDDLEWARE
 app.use(express.json());
@@ -70,7 +61,9 @@ app.delete("/api/bayava/:id", async (req, res) => {
 });
 
 // Register and Login Routes
+app.use("/api/bayava/authentication", require("./routes/jwtAuth"));
 
+app.use("/api/bayava/dashboard", require("./routes/dashboard"));
 
 // Listener
 app.listen(port, () => {
