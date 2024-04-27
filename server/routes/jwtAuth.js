@@ -11,9 +11,7 @@ router.post("/register", async (req, res) => {
     const { password__c, first_name__c, name, username__c, address__c, last_name__c, phone__c } = req.body;
 
     try {
-        const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE username__c = $1", [
-            username__c
-        ]);
+        const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE username__c = $1", [username__c]);
 
         if (user.rows.length > 0) {
             return res.status(401).json("User already exist!");
@@ -38,7 +36,7 @@ router.post("/register", async (req, res) => {
 });
 
 // Login
-router.post("/api/bayava/login", validInfo, async (req, res) => {
+router.post("/login", validInfo, async (req, res) => {
     const { username__c, password__c } = req.body;
 
     try {
@@ -65,7 +63,7 @@ router.post("/api/bayava/login", validInfo, async (req, res) => {
 });
 
 // Verify
-router.post("/api/bayava/verify", authorize, (req, res) => {
+router.post("/verify", authorize, (req, res) => {
     try {
         res.json(true);
     } catch (err) {
