@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
 	return (
 		<div className="fixed top-0 left-0 z-100 w-full flex flex-col items-center justify-center">
-			<nav className="backdrop-blur-lg fixed top-0 left-0 w-full h-16 flex items-center justify-between px-10 border-b-2 shadow-lg z-100">
+			<nav className="backdrop-blur-lg fixed top-0 left-0 w-full h-16 flex items-center justify-between px-10 shadow-lg z-100">
 				<div>
 					<Link to="/" className="logo">
 						<h1 className="">Bayava</h1>

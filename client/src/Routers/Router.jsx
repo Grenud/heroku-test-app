@@ -4,6 +4,7 @@ import Navbar from '../Components/Header/Navbar'
 import Dashboard from '../Components/Dashboard/Dashboard'
 import Register from '../Components/Auth/Register'
 import Login from '../Components/Auth/Login'
+import Footer from '../Components/Footer/Footer'
 
 function Routers() {
   return (
@@ -17,6 +18,7 @@ function Routers() {
             <Route path="/contact" element={<h1>Contact</h1>} />
             <Route path="/about" element={<h1>About</h1>} />
         </Routes>
+        <Footer />
     </div>
   )
 }

@@ -118,4 +118,78 @@
         background: theme(colors.blue.700);
         color: theme('colors.white');
     }
+
+    .login-button {
+        background: theme('colors.gray.800');
+        border: 1px solid #e0e0e0;
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 4px;
+        color: theme('colors.white');
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .login-button:hover {
+        background: theme(colors.gray.900);
+        color: theme('colors.white');
+    }
+
+    .login-button:active {
+        background: theme(colors.gray.900);
+        color: theme('colors.white');
+    }
+
+    .social-button {
+        background: theme('colors.white');
+        border: 1px solid #e0e0e0;
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 50%;
+        color: theme('colors.black');
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .social-button:hover {
+        background: theme(colors.gray.100);
+        color: theme('colors.black');
+    }
+
+    .social-button:active {
+        background: theme(colors.gray.200);
+        color: theme('colors.black');
+    }
+
+    .footer-social-button {
+        background: theme('colors.black');
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 50%;
+        color: theme('colors.white');
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .footer-social-button:hover {
+        background: theme(colors.gray.800);
+        color: theme('colors.white');
+    }
+
+    .footer-social-button:active {
+        background: theme(colors.gray.900);
+        color: theme('colors.white');
+    }
 }
