@@ -63,7 +63,7 @@ router.post("/login", validInfo, async (req, res) => {
 });
 
 // Verify
-router.post("/api/bayava/verify", authorize, (req, res) => {
+router.post("/verify", authorize, (req, res) => {
     try {
         res.json(true);
     } catch (err) {
