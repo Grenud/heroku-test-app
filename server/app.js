@@ -17,21 +17,23 @@ const poolDB = new Pool({
     }
 });
 
-//Middleware
+// MIDDLEWARE
+app.use(express.json());
+
 app.use(cors(
     {
         origin: "http://localhost:3000"
     }
 ));
 
-app.use(express.json());
-
-
-// Main routes
+// ROUTES
+// DB CRUD ops routes
+// Test Msg
 app.get("/", (req, res) => {
     res.status(200).json({msg: "Hello World"});
 });
 
+// GET Operation
 app.get("/api/bayava", async (req, res) => {
     try {
         const users = await poolDB.query("SELECT * from bayavasfdc.course__c");
@@ -43,6 +45,7 @@ app.get("/api/bayava", async (req, res) => {
     
 });
 
+// POST Operation
 app.post("/api/bayava", async (req, res) => {
     try {
         const {mode__c, instructor__c, name, cover_photo__c} = req.body;
@@ -54,6 +57,7 @@ app.post("/api/bayava", async (req, res) => {
     }
 });
 
+// DELETE Operation
 app.delete("/api/bayava/:id", async (req, res) => {
     try {
       const { id } = req.params;
@@ -65,8 +69,10 @@ app.delete("/api/bayava/:id", async (req, res) => {
     }
 });
 
-// Listener
+// Register and Login Routes
 
+
+// Listener
 app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);
 });
