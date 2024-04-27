@@ -119,7 +119,7 @@
         color: theme('colors.white');
     }
 
-    .login-button {
+    .button {
         background: theme('colors.gray.800');
         border: 1px solid #e0e0e0;
         font-family: 'Lexend Exa', sans-serif;
@@ -134,12 +134,12 @@
         transition: background-color 0.3s, color 0.3s;
     }
 
-    .login-button:hover {
+    .button:hover {
         background: theme(colors.gray.900);
         color: theme('colors.white');
     }
 
-    .login-button:active {
+    .button:active {
         background: theme(colors.gray.900);
         color: theme('colors.white');
     }

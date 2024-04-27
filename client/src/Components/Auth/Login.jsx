@@ -35,7 +35,7 @@ function Login() {
 						</div>
 
 						<div className="md:w-3/4 w-full">
-							<button className="login-button w-full">
+							<button className="button w-full">
 								Login
 							</button>
 						</div>
@@ -75,8 +75,8 @@ function Login() {
 							<p>
 								Don&rsquo;t have an account?{" "}
 								<span>
-									<Link href="/register" className="">
-										Register
+									<Link to="/register" className="">
+										Register Here
 									</Link>
 								</span>
 							</p>
