@@ -6,21 +6,36 @@ function Footer() {
 	const year = new Date().getFullYear();
 
 	return (
-		<div className="flex flex-col justify-between items-center w-full h-96 bg-gray-400 rounded-tl-full py-10 text-gray-50">
-			<div className="flex justify-between items-center w-full px-48">
+		<div className="mt-16 flex flex-col justify-between items-center w-full h-full bg-gray-400 md:rounded-tl-full rounded-t-3xl shadow-lg py-10 text-gray-50 gap-7 md:text-left text-center">
+			<div className="flex md:flex-row flex-col justify-between items-center w-full md:pl-48 px-10 gap-5">
 				<div className="flex flex-col gap-5">
-					<h1 className="text-6xl">Bayava</h1>
-					<p>
+					<h1 className="lg:text-2xl md:text-xl xl:text-6xl text-3xl font-[700] text-gray-950">Bayava</h1>
+					<p className="md:w-[10rem] w-full">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
 				</div>
-				<div>
-					<h3></h3>
+				<div className="flex flex-col gap-3">
+					<div className="flex flex-col gap-3">
+						<h3 className="text-2xl text-gray-950">Office</h3>
+						<div className="md:w-20 w-full h-0.5 bg-gray-950 rounded"></div>
+					</div>
+					<div>
+						<a>
+							Address : 123, Lorem ipsum dolor sit amet
+							consectetur
+						</a>
+					</div>
+					<div>
+						<a>Phone : +91 1234567890</a>
+					</div>
+					<div>
+						<a>Email : email@email.com</a>
+					</div>
 				</div>
 				<div className="flex flex-col gap-3">
 					<div className="flex flex-col gap-3">
-						<h3 className="text-2xl">Links</h3>
-						<div className="w-20 h-0.5 bg-gray-200 rounded"></div>
+						<h3 className="text-2xl text-gray-950">Links</h3>
+						<div className="md:w-20 w-full h-0.5 bg-gray-950 rounded"></div>
 					</div>
 					<ul className="flex flex-col gap-3">
 						<li>
@@ -39,10 +54,10 @@ function Footer() {
 				</div>
 				<div className="flex flex-col gap-5">
 					<div className="flex flex-col gap-3">
-						<h3 className="text-2xl">Social Media</h3>
-						<div className="w-20 h-0.5 bg-gray-200 rounded"></div>
+						<h3 className="text-2xl text-gray-950">Social Media</h3>
+						<div className="md:w-20 w-full h-0.5 bg-gray-950 rounded"></div>
 					</div>
-					<ul className="flex gap-3 justify-center">
+					<ul className="flex flex-col gap-3 justify-center">
 						<li className="flex items-center justify-center gap-3">
 							<Link className="footer-social-button" to="/">
 								<svg
@@ -95,8 +110,10 @@ function Footer() {
 					</ul>
 				</div>
 			</div>
-			<div className="w-3/4 h-0.5 bg-gray-200 rounded"></div>
-			<div>&copy; {year} Bayava. All rights reserved.</div>
+			<div className="w-full flex items-center justify-center flex-col gap-10">
+				<div className="w-3/4 h-0.5 bg-gray-950 rounded"></div>
+				<div>&copy; {year} Bayava. All rights reserved.</div>
+			</div>
 		</div>
 	);
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import Navbar from '../Components/Header/Navbar'
 import Dashboard from '../Components/Dashboard/Dashboard'
 import Register from '../Components/Auth/Register'
@@ -11,7 +11,8 @@ function Routers() {
     <div>
         <Navbar />
         <Routes>
-            <Route path="/" element={<h1>Home</h1>} />
+            <Route path='/' element={<Navigate to='/dashboard'/>} />
+            {/* <Route path="/" element={<h1>Home</h1>} /> */}
             <Route path='/dashboard' element={<Dashboard/>} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />

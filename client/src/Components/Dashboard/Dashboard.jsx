@@ -15,7 +15,7 @@ function Dashboard() {
 	}, []);
 
 	return (
-		<div className="h-screen flex flex-wrap items-center justify-center gap-10">
+		<div className="min-h-screen flex flex-wrap items-center justify-center gap-10 md:mt-16 mt-24 md:p-0 p-10">
 			{data.map((item, index) => {
 				const firstName = item.instructor__c.split(" ")[0];
 				return (
