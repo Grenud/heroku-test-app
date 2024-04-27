@@ -7,7 +7,7 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const authorize = require("../middleware/authorize");
 
 // Register
-router.post("api/bayava/register", async (req, res) => {
+router.post("/register", async (req, res) => {
     const { password__c, first_name__c, name, username__c, address__c, last_name__c, phone__c } = req.body;
 
     try {
@@ -20,7 +20,7 @@ router.post("api/bayava/register", async (req, res) => {
         }
 
         const salt = await bcrypt.genSalt(10);
-        const bcryptPassword = await bcrypt.hash(password, salt);
+        const bcryptPassword = await bcrypt.hash(password__c, salt);
 
         let newUser = await poolDB.query(
             "INSERT INTO bayavasfdc.customer_detail__c(password__c, first_name__c, name, username__c, address__c, last_name__c, phone__c) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
