@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
     }
     catch (err) {
         console.error(err.message);
-        res.status(500).send("Server error");
+        res.status(500).send("Error @jwtAuth.js in Register");
     }
 });
 
@@ -58,7 +58,7 @@ router.post("/login", validInfo, async (req, res) => {
         return res.json({ jwtToken });
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server error");
+        res.status(500).send("Error @jwtAuth.js in Login");
     }
 });
 
@@ -68,7 +68,7 @@ router.post("/verify", authorize, (req, res) => {
         res.json(true);
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server error");
+        res.status(500).send("Error @jwtAuth.js in Verify");
     }
 });
 
