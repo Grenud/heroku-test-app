@@ -42,9 +42,7 @@ router.post("/api/bayava/login", validInfo, async (req, res) => {
     const { username__c, password__c } = req.body;
 
     try {
-        const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE username__c = $1", [
-            username__c
-        ]);
+        const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE username__c = $1", [username__c]);
 
         if (user.rows.length === 0) {
             return res.status(401).json("Invalid Credential");
