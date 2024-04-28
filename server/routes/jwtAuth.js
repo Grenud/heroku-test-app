@@ -6,7 +6,18 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const validInfo = require("../middleware/validation");
 const authorize = require("../middleware/authorize");
 
-// Register
+// REGISTER ROUTE
+// Test JSON for http://localhost:8000/auth/register POST operation
+// {
+//     "username__c":"mut", 
+//     "email__c":"muteenk@gmail.com", 
+//     "password__c":"1234mut", 
+//     "first_name__c":"Mutin", 
+//     "last_name__c":"Nabee", 
+//     "address__c":"Greater Noida", 
+//     "phone__c":"1233211235"
+// }
+
 router.post("/register", async (req, res) => {
 
     // Destructure the req.body { id__c, username__c, email__c, password__c, first_name__c, last_name__c, address__c, phone__c }
@@ -39,26 +50,37 @@ router.post("/register", async (req, res) => {
     }
 });
 
-// Login
+// LOGIN ROUTE
+// Test JSON for http://localhost:8000/auth/login POST operation
+// {    
+//     "email__c":"muteenk@gmail.com",
+//     "password__c":"1234mut"
+// }
+//
 router.post("/login", validInfo, async (req, res) => {
-    const { username__c, password__c } = req.body;
+    // Destructure the req.body
+    const { email__c, password__c } = req.body;
+
 
     try {
+        // Check if user doesn't exist (if not then throw error)
         const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE email__c = $1", [email__c]);
+        console.log(user.rows);
 
         if (user.rows.length === 0) {
-            return res.status(401).json("Invalid Credential");
+            return res.status(401).json("Invalid e-mail or password! @Login");
         }
 
+        // Check if incoming password is the same as the database password
         const validPassword = await bcrypt.compare(
             password__c,
             user.rows[0].user_password
         );
-
         if (!validPassword) {
             return res.status(401).json("Invalid Credential");
         }
 
+        // Give them the JWT token
         const jwtToken = jwtGenerator(user.rows[0].user_id);
         return res.json({ jwtToken });
     } 
