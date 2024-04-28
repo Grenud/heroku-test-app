@@ -60,7 +60,7 @@ app.delete("/api/bayava/:id", async (req, res) => {
     }
 });
 
-// Register and Login Routes
+// REGISTER AND LOGIN ROUTES
 app.use("/auth", require("./routes/jwtAuth"));
 
 app.use("/dashboard", require("./routes/dashboard"));
@@ -69,4 +69,3 @@ app.use("/dashboard", require("./routes/dashboard"));
 app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);
 });
-
