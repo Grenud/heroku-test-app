@@ -5,17 +5,18 @@ const poolDB = require("../db");
 const jwtGenerator = require("../utils/jwtGenerator");
 const validInfo = require("../middleware/validation");
 const authorize = require("../middleware/authorize");
+const validation = require("../middleware/validation");
 
 // REGISTER ROUTE
 // Test JSON for http://localhost:8000/auth/register POST operation
 // {
-//     "username__c":"mut", 
+//     "inputUsername":"mut", 
 //     "inputEmail":"muteenk@gmail.com", 
 //     "inputPassword":"1234mut", 
-//     "first_name__c":"Mutin", 
-//     "last_name__c":"Nabee", 
-//     "address__c":"Greater Noida", 
-//     "phone__c":"1233211235"
+//     "inputFirstName":"Mutin", 
+//     "inputLastName":"Nabee", 
+//     "inputAddress":"Greater Noida", 
+//     "inputPhone":"1233211235"
 // }
 
 router.post("/register", async (req, res) => {
@@ -56,7 +57,7 @@ router.post("/register", async (req, res) => {
 //     "inputEmail":"muteenk@gmail.com",
 //     "inputPassword":"1234mut"
 // }
-router.post("/login", validInfo, async (req, res) => {
+router.post("/login", validation, async (req, res) => {
     // Destructure the req.body
     const { inputEmail, inputPassword } = req.body;
 
