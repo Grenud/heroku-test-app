@@ -1,3 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend+Exa:wght@100..900&family=Lexend+Giga:wght@100..900&family=Lexend+Mega:wght@100..900&family=Lexend+Peta:wght@100..900&family=Lexend+Tera:wght@100..900&family=Lexend+Zetta:wght@100..900&family=Lexend:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        font-family: 'Lexend Deca', sans-serif;
+    }
+
+    h1 {
+        font-family: 'Lexend Giga', sans-serif;
+    }
+
+    h2 {
+        font-family: 'Lexend Mega', sans-serif;
+    }
+
+    p {
+        font-family: 'Lexend', sans-serif;
+    }
+
+    a {
+        font-family: 'Lexend', sans-serif;
+    }
+
+    a:hover {
+        color: theme(colors.blue.500);
+    }
+
+    a:active {
+        color: theme(colors.blue.700);
+
+    }
+
+    .logo {
+        font-family: 'Lexend Giga', sans-serif;
+        font-weight: 700;
+        color: theme(colors.black);
+    }
+
+    .logo:hover {
+        color: theme(colors.gray.500);
+    }
+
+    .link-outline-button {
+        background: theme(colors.gray.100);
+        border: 1px solid #e0e0e0;
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 4px;
+        color: theme(colors.black);
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .link-outline-button:hover {
+        background: theme(colors.gray.200);
+        color: theme(colors.black);
+    }
+    
+    .link-outline-button:active {
+        background: theme(colors.gray.800);
+        color: theme(colors.white);
+    }
+
+    .link-button {
+        background: theme(colors.black);
+        border: 1px solid theme(colors.white);
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 4px;
+        color: theme(colors.white);
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .link-button:hover {
+        background: theme(colors.gray.800);
+        color: theme(colors.white);
+    }
+
+    .link-button:active {
+        background: theme(colors.gray.900);
+        color: theme(colors.white);
+    }
+
+    .enroll-button {
+        background: theme('colors.blue.500');
+        border: 1px solid #e0e0e0;
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 4px;
+        color: theme('colors.white');
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .enroll-button:hover {
+        background: theme(colors.blue.600);
+        color: theme('colors.white');
+    }
+
+    .enroll-button:active {
+        background: theme(colors.blue.700);
+        color: theme('colors.white');
+    }
+
+    .button {
+        background: theme('colors.gray.800');
+        border: 1px solid #e0e0e0;
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 4px;
+        color: theme('colors.white');
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .button:hover {
+        background: theme(colors.gray.900);
+        color: theme('colors.white');
+    }
+
+    .button:active {
+        background: theme(colors.gray.900);
+        color: theme('colors.white');
+    }
+
+    .social-button {
+        background: theme('colors.white');
+        border: 1px solid #e0e0e0;
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 50%;
+        color: theme('colors.black');
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .social-button:hover {
+        background: theme(colors.gray.100);
+        color: theme('colors.black');
+    }
+
+    .social-button:active {
+        background: theme(colors.gray.200);
+        color: theme('colors.black');
+    }
+
+    .footer-social-button {
+        background: theme('colors.black');
+        font-family: 'Lexend Exa', sans-serif;
+        border-radius: 50%;
+        color: theme('colors.white');
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .footer-social-button:hover {
+        background: theme(colors.gray.800);
+        color: theme('colors.white');
+    }
+
+    .footer-social-button:active {
+        background: theme(colors.gray.900);
+        color: theme('colors.white');
+    }
+}
