@@ -40,7 +40,7 @@ router.post("/login", validInfo, async (req, res) => {
     const { username__c, password__c } = req.body;
 
     try {
-        const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE username__c = $1", [username__c]);
+        const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE email__c = $1", [email__c]);
 
         if (user.rows.length === 0) {
             return res.status(401).json("Invalid Credential");
@@ -54,9 +54,11 @@ router.post("/login", validInfo, async (req, res) => {
         if (!validPassword) {
             return res.status(401).json("Invalid Credential");
         }
+
         const jwtToken = jwtGenerator(user.rows[0].user_id);
         return res.json({ jwtToken });
-    } catch (err) {
+    } 
+    catch (err) {
         console.error(err.message);
         res.status(500).send("Error @jwtAuth.js in Login");
     }
