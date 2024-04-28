@@ -1,37 +1,30 @@
 const express = require("express");
-const {Pool} = require("pg")
 const dotenv = require("dotenv");
 const cors = require("cors");
+const poolDB = require("./db");
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 4000;
 
-const DB_URI = process.env.DATABASE_URL;
+// MIDDLEWARE
+app.use(express.json());
 
-const poolDB = new Pool({
-    connectionString: DB_URI,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
-
-//Middleware
 app.use(cors(
     {
         origin: "http://localhost:3000"
     }
 ));
 
-app.use(express.json());
-
-
-// Main routes
+// ROUTES
+// DB CRUD ops routes
+// Test Msg
 app.get("/", (req, res) => {
     res.status(200).json({msg: "Hello World"});
 });
 
+// GET Operation
 app.get("/api/bayava", async (req, res) => {
     try {
         const users = await poolDB.query("SELECT * from bayavasfdc.course__c");
@@ -43,6 +36,7 @@ app.get("/api/bayava", async (req, res) => {
     
 });
 
+// POST Operation
 app.post("/api/bayava", async (req, res) => {
     try {
         const {mode__c, instructor__c, name, cover_photo__c} = req.body;
@@ -54,6 +48,7 @@ app.post("/api/bayava", async (req, res) => {
     }
 });
 
+// DELETE Operation
 app.delete("/api/bayava/:id", async (req, res) => {
     try {
       const { id } = req.params;
@@ -65,8 +60,13 @@ app.delete("/api/bayava/:id", async (req, res) => {
     }
 });
 
-// Listener
+// Register and Login Routes
+app.use("/auth", require("./routes/jwtAuth"));
 
+app.use("/dashboard", require("./routes/dashboard"));
+
+// Listener
 app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);
 });
+
