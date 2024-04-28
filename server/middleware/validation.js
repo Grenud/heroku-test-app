@@ -1,12 +1,12 @@
 module.exports = function (req, res, next) {
-    const { username__c, inputEmail, inputPassword, first_name__c, last_name__c, address__c, phone__c } = req.body;
+    const { inputUsername, inputEmail, inputPassword, inputFirstName, inputLastName, inputAddress, inputPhone } = req.body;
 
     function validEmail(userEmail) {
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
     }
 
     if (req.path === "/register") {
-        if (![username__c, inputEmail, inputPassword, first_name__c, last_name__c, address__c, phone__c].every(Boolean)) {
+        if (![inputUsername, inputEmail, inputPassword, inputFirstName, inputLastName, inputAddress, inputPhone].every(Boolean)) {
             return res.json("Missing Registration Credentials @validation.js");
         }
         else if (!validEmail(inputEmail)) {
