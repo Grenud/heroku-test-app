@@ -5,6 +5,7 @@ import Dashboard from '../Components/Dashboard/Dashboard'
 import Register from '../Components/Auth/Register'
 import Login from '../Components/Auth/Login'
 import Footer from '../Components/Footer/Footer'
+import FileUpload from '../Components/FileUpload'
 import AdminDashboard from '../Components/Dashboard/AdminDashboard'
 import CreateProduct from '../Components/Products/CreateProduct'
 
@@ -22,6 +23,7 @@ function Routers() {
             <Route path='/register' element={<Register />} />
             <Route path="/contact" element={<h1>Contact</h1>} />
             <Route path="/about" element={<h1>About</h1>} />
+            <Route path="/upload" element={<FileUpload />} />
         </Routes>
         <Footer />
     </div>

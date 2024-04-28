@@ -1,28 +1,52 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const bodyParser = require("body-parser")
+const multer = require("multer");
+const crypto = require("crypto");
+const {S3Client, PutObjectCommand} = require("@aws-sdk/client-s3");
+
 const poolDB = require("./db");
 
+// Config
 dotenv.config();
-
 const app = express();
 const port = process.env.PORT || 4000;
 
-// MIDDLEWARE
-app.use(express.json());
+// AWS S3 Config
+const s3Bucket = process.env.S3_BUCKET
+const s3Region = process.env.S3_REGION
+const s3AccessKey = process.env.S3_ACCESS_KEY
+const s3AccessSecret = process.env.S3_ACCESS_SECRET
 
-app.use(cors(
-    {
-        origin: "http://localhost:3000"
+// AWS S3 Client Setup
+const s3 = new S3Client({
+    region: s3Region,
+    credentials: {
+        accessKeyId: s3AccessKey,
+        secretAccessKey: s3AccessSecret
     }
-));
+});
 
-// ROUTES
+// MIDDLEWARE
+const corsOptions = {
+    credentials: true,
+    origin: 'http://localhost:3000',    
+};
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
+
+// ----------- ROUTES --------------
 // DB CRUD ops routes
+
+
 // Test Msg
 app.get("/", (req, res) => {
     res.status(200).json({msg: "Hello World"});
 });
+
 
 // GET Operation
 app.get("/api/bayava", async (req, res) => {
@@ -60,6 +84,31 @@ app.delete("/api/bayava/:id", async (req, res) => {
       console.log(err.message);
     }
 });
+
+
+// Upload Image
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+app.post('/upload', upload.single('image'), async (req, res) => {
+
+    const randomImageName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex');
+
+    const newImageName = randomImageName();
+    const params = {
+        Bucket: s3Bucket,
+        Key: newImageName,
+        Body: req.file.buffer,
+        ContentType: req.file.mimetype
+    }
+
+    const command = new PutObjectCommand(params);
+    await s3.send(command);
+
+    res.status(201).json({msg: "Image uploaded successfully!", url: `https://d3o3o3yj4icffw.cloudfront.net/${newImageName}`});
+})
+
 
 // REGISTER AND LOGIN ROUTES
 app.use("/auth", require("./routes/jwtAuth"));
