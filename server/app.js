@@ -109,9 +109,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 })
 
 
-
-
-// Register and Login Routes
+// REGISTER AND LOGIN ROUTES
 app.use("/auth", require("./routes/jwtAuth"));
 
 app.use("/dashboard", require("./routes/dashboard"));
