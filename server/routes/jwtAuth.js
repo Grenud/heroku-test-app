@@ -2,8 +2,8 @@ const express = require("express");
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const poolDB = require("../db");
-const validInfo = require("../middleware/validation");
 const jwtGenerator = require("../utils/jwtGenerator");
+const validInfo = require("../middleware/validation");
 const authorize = require("../middleware/authorize");
 
 // Register
