@@ -8,10 +8,10 @@ const authorize = require("../middleware/authorize");
 
 // Register
 router.post("/register", async (req, res) => {
-    const { password__c, first_name__c, name, username__c, address__c, last_name__c, phone__c } = req.body;
+    const { id__c, username__c, email__c, password__c, first_name__c, last_name__c, address__c, phone__c } = req.body;
 
     try {
-        const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE username__c = $1", [username__c]);
+        const user = await poolDB.query("SELECT * FROM bayavasfdc.customer_detail__c WHERE id__c = $1", [id__c]);
 
         if (user.rows.length > 0) {
             return res.status(401).json("User already exist!");
@@ -21,8 +21,8 @@ router.post("/register", async (req, res) => {
         const bcryptPassword = await bcrypt.hash(password__c, salt);
 
         let newUser = await poolDB.query(
-            "INSERT INTO bayavasfdc.customer_detail__c(password__c, first_name__c, name, username__c, address__c, last_name__c, phone__c) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-            [bcryptPassword, first_name__c, name, username__c, address__c, last_name__c, phone__c]
+            "INSERT INTO bayavasfdc.customer_detail__c(username__c, email__c, password__c, first_name__c, last_name__c, address__c, phone__c) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+            [username__c, email__c, bcryptPassword, first_name__c, last_name__c, address__c, phone__c]
         );
 
         const jwtToken = jwtGenerator(newUser.rows[0].user_id);
