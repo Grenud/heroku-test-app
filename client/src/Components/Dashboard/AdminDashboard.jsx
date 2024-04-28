@@ -33,7 +33,7 @@ function AdminDashboard() {
 			</div>
 			<div className="flex flex-wrap items-center justify-center gap-10  md:p-0 p-10">
 				{data.map((item, index) => {
-					const firstName = item.instructor__c.split(" ")[0];
+					// const firstName = item.instructor__c.split(" ")[0];
 					return (
 						<div key={index}>
 							<div className="max-w-sm rounded overflow-hidden shadow-lg backdrop-blur-lg">
@@ -49,7 +49,7 @@ function AdminDashboard() {
 										<div className="text-gray-700 text-base">
 											Instructor :{" "}
 											<span className="font-semibold">
-												{firstName}
+												{item.instructor__c}
 											</span>
 										</div>
 									</div>
