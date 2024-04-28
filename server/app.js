@@ -42,6 +42,7 @@ app.post("/api/bayava", async (req, res) => {
         const {mode__c, instructor__c, name, cover_photo__c} = req.body;
         const newCourse = await poolDB.query("INSERT INTO bayavasfdc.course__c (mode__c, instructor__c, name, cover_photo__c) VALUES($1, $2, $3, $4) RETURNING *", [mode__c, instructor__c, name, cover_photo__c]);
         res.status(200).json(newCourse.rows[0]);
+        console.log(req.body);
     } 
     catch (error) {
         console.error(error.message)

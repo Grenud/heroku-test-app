@@ -5,6 +5,8 @@ import Dashboard from '../Components/Dashboard/Dashboard'
 import Register from '../Components/Auth/Register'
 import Login from '../Components/Auth/Login'
 import Footer from '../Components/Footer/Footer'
+import AdminDashboard from '../Components/Dashboard/AdminDashboard'
+import CreateProduct from '../Components/Products/CreateProduct'
 
 function Routers() {
   return (
@@ -12,6 +14,8 @@ function Routers() {
         <Navbar />
         <Routes>
             <Route path='/' element={<Navigate to='/dashboard'/>} />
+            <Route path='/adminDashboard' element={<AdminDashboard/>} />
+            <Route path='/createProduct' element={<CreateProduct/>} />
             {/* <Route path="/" element={<h1>Home</h1>} /> */}
             <Route path='/dashboard' element={<Dashboard/>} />
             <Route path='/login' element={<Login />} />
