@@ -1,12 +1,6 @@
-// Required data
-// uuid : varchar distinct() primary NOT_NULL
-// username : varchar distinct() NOT_NULL
-// password: varchar >8 characters NOT_NULL
-// email : varchar unique should satisfy text@domain.com NOT_NULL
-// phone number : int =10 characters unique NOT_NULL 
-// first name : varchar NOT_NULL
-// last_name : varchar
-// address : textarea NOT_NULL
+// TABLE NAMES: bayavasfdc.course__c, bayavasfdc.customer_detail__c
+// bayava.course__c : id, mode__c, instructor__c, name, cover_photo__c
+// bayava.customer_detail__c : user_id, username__c, email__c, password__c, first_name__c, last_name__c, address__c, phone__c
 
 const {Pool} = require("pg")
 const dotenv = require("dotenv");
